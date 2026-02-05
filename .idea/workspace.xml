@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="31f1f50e-f5b7-4a51-8c5d-7ef55dda9392" name="Changes" comment="" />
+    <list default="true" id="31f1f50e-f5b7-4a51-8c5d-7ef55dda9392" name="Changes" comment="vercel json file added" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,8 +86,17 @@
       <workItem from="1770155879966" duration="23000" />
       <workItem from="1770155911808" duration="171000" />
       <workItem from="1770156093704" duration="813000" />
-      <workItem from="1770157739465" duration="10806000" />
+      <workItem from="1770157739465" duration="11197000" />
     </task>
+    <task id="LOCAL-00001" summary="vercel json file added">
+      <option name="closed" value="true" />
+      <created>1770295715461</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1770295715461</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,6 +104,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="quick fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="vercel json file added" />
+    <option name="LAST_COMMIT_MESSAGE" value="vercel json file added" />
   </component>
 </project>
