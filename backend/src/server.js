@@ -22,7 +22,7 @@ const startServer = async () => {
     try {
         await connectDB();
         if (ENV.NODE_ENV !== "production") {
-            app.liste(ENV.PORT, () => {
+            app.listen(ENV.PORT, () => {
                 console.log(`Server started on port ${ENV.PORT}`);
             })
         }
@@ -33,5 +33,5 @@ const startServer = async () => {
 }
 
 
-
+export default app;
 // aaravraghavan_db_user: rzjEmHqVmhQbhi8i
