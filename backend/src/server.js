@@ -1,37 +1,38 @@
+import "../instrument.mjs"
 import {ENV} from "./config/env.js"
 import {connectDB} from "./config/db.js";
 import { clerkMiddleware } from "@clerk/express";
 import express from "express";
 import { serve } from "inngest/express";
 import { inngest, functions } from "./config/inngest.js"
-
+import chatRoutes from "./routes/chat.route.js"
+import * as Sentry from "@sentry/node";
 const app = express();
 
 app.use(clerkMiddleware());
 
 app.use(express.json());
-app.use("/api/inngest", serve({ client: inngest, functions }));
+
+app.get('/debug-sentry', (req, res) => {
+    throw new Error('My first Sentry error')
+})
+
+Sentry.setupConnectErrorHandler(app)
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
 })
 
+app.use("/api/inngest", serve({ client: inngest, functions }));
+app.use("/api/chat", chatRoutes)
 
 
-const startServer = async () => {
-    try {
-        await connectDB();
-        if (ENV.NODE_ENV !== "production") {
-            app.listen(ENV.PORT, () => {
-                console.log(`Server started on port ${ENV.PORT}`);
-            })
-        }
-    } catch (error) {
-        console.error(error);
-        process.exit(1);
-    }
-}
 
+
+app.listen(ENV.PORT, () => {
+    console.log(`Server started on port ${ENV.PORT}`);
+    connectDB()
+})
 
 export default app;
 // aaravraghavan_db_user: rzjEmHqVmhQbhi8i
