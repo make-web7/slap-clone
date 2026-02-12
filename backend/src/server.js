@@ -6,18 +6,22 @@ import express from "express";
 import { serve } from "inngest/express";
 import { inngest, functions } from "./config/inngest.js"
 import chatRoutes from "./routes/chat.route.js"
-import * as Sentry from "@sentry/node";
+import "../instrument.mjs"
+import * as Sentry from "@sentry/node"
+
 const app = express();
 
 app.use(clerkMiddleware());
 
-app.use(express.json());
-
-app.get('/debug-sentry', (req, res) => {
-    throw new Error('My first Sentry error')
+app.get("/debug-sentry", (req, res) => {
+    throw new Error("First Sentry Error!")
 })
 
-Sentry.setupConnectErrorHandler(app)
+app.use(express.json());
+app.use("/api/inngest", serve({ client: inngest, functions }));
+app.use("/api/chat", chatRoutes);
+
+Sentry.setupExpressErrorHandler(app)
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
@@ -28,11 +32,20 @@ app.use("/api/chat", chatRoutes)
 
 
 
-
-app.listen(ENV.PORT, () => {
-    console.log(`Server started on port ${ENV.PORT}`);
-    connectDB()
-})
+const startServer = async () => {
+    try {
+        await connectDB();
+        if (ENV.NODE_ENV !== "production") {
+            app.listen(ENV.PORT, () => {
+                console.log(`Server started on port ${ENV.PORT}`);
+            })
+        }
+    } catch (error) {
+        console.error(error);
+        process.exit(1);
+    }
+}
+startServer()
 
 export default app;
 // aaravraghavan_db_user: rzjEmHqVmhQbhi8i

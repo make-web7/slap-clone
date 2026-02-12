@@ -1,3 +1,5 @@
+import {StreamChat} from "stream-chat"
+import {ENV} from "../config/env.js"
 import {StreamChat} from "stream-chat";
 import { ENV } from "../config/env.js";
 
@@ -6,29 +8,27 @@ const streamClient = StreamChat.getInstance(ENV.STREAM_API_KEY, ENV.STREAM_API_S
 export const upsertStreamUser = async (userData) => {
     try {
         await streamClient.upsertUser(userData)
-        console.log('Stream dude upserted: ', userData.name)
-        return userData;
+        console.log('Upsertedstream user successfully', userData.name)
     } catch (error) {
-        console.log('Error upserting Stream dude: ' + error);
+        console.error("error deleting stream user", error)
     }
 }
 
-export const deleteStreamUser = async (userID) => {
+export const deleteStreamUser = async (userId) => {
     try {
-        await streamClient.upsertUser(userID)
-        console.log('Stream dude deleted: ', userID)
-        return userData;
+        await streamClient.deleteUser(userId)
+        console.log(' user deleted successfully', userData.name)
     } catch (error) {
-        console.error('Error deleting Stream dude: ' + error);
+        console.error("error deleting stream user", error)
     }
 }
 
-export const generateStreamToken = (userID) => {
+export const generateStreamToken = (userId) => {
     try {
-        const userIdString = userID.toString();
+        const userIdString = userId.toString();
         return streamClient.createToken(userIdString)
     } catch (error) {
-        console.log('Error generating token for stream: ' +  error)
+        console.error("error deleting stream token", error)
         return null
     }
 }
