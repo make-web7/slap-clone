@@ -1,3 +1,4 @@
+import "../instrument.mjs"
 import {ENV} from "./config/env.js"
 import {connectDB} from "./config/db.js";
 import { clerkMiddleware } from "@clerk/express";
@@ -25,6 +26,9 @@ Sentry.setupExpressErrorHandler(app)
 app.get('/', (req, res) => {
     res.send('Hello World!');
 })
+
+app.use("/api/inngest", serve({ client: inngest, functions }));
+app.use("/api/chat", chatRoutes)
 
 
 

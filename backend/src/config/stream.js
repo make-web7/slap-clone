@@ -1,5 +1,7 @@
 import {StreamChat} from "stream-chat"
 import {ENV} from "../config/env.js"
+import {StreamChat} from "stream-chat";
+import { ENV } from "../config/env.js";
 
 const streamClient = StreamChat.getInstance(ENV.STREAM_API_KEY, ENV.STREAM_API_SECRET)
 
