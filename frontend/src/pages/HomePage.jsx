@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-const HomePage = () => {
-    return (
-        <div>HomePage</div>
-    )
-}
-export default HomePage
-=======
 import {UserButton} from "@clerk/clerk-react";
 
 const HomePage = () => {
@@ -17,4 +9,3 @@ const HomePage = () => {
 }
 
 export default HomePage
->>>>>>> auth-frontend

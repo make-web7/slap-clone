@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-const AuthPage = () => {
-    return (
-        <div>Authpage</div>
-    )
-}
-=======
 import {SignInButton} from "@clerk/clerk-react";
 import "../styles/auth.css"
 
@@ -55,5 +48,4 @@ const AuthPage = () => {
     )
 }
 
->>>>>>> auth-frontend
 export default AuthPage
