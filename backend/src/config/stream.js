@@ -10,6 +10,7 @@ export const upsertStreamUser = async (userData) => {
         console.log('Upsertedstream user successfully', userData.name)
     } catch (error) {
         console.error("error deleting stream user", error)
+        throw new Error(error)
     }
 }
 
@@ -19,6 +20,7 @@ export const deleteStreamUser = async (userId) => {
         console.log(' user deleted successfully', userId)
     } catch (error) {
         console.error("error deleting stream user", error)
+        throw new Error(error)
     }
 }
 
@@ -28,6 +30,7 @@ export const generateStreamToken = (userId) => {
         return streamClient.createToken(userIdString)
     } catch (error) {
         console.error("error deleting stream token", error)
-        return null
+        throw new Error(error)
+
     }
 }

@@ -26,6 +26,22 @@ Sentry.setupExpressErrorHandler(app)
 app.get('/', (req, res) => {
     res.send('Hello World!');
 })
+// Add this temporarily to server.js
+app.get('/test-stream', async (req, res) => {
+    const { StreamChat } = await import('stream-chat');
+    const { ENV } = await import('./config/env.js');
+
+    try {
+        const client = StreamChat.getInstance(ENV.STREAM_API_KEY, ENV.STREAM_API_SECRET);
+        const result = await client.upsertUser({
+            id: 'test-' + Date.now(),
+            name: 'Test User',
+        });
+        res.json({ success: true, result });
+    } catch (error) {
+        res.json({ success: false, error: error.message, stack: error.stack });
+    }
+});
 
 
 
