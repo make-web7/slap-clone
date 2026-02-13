@@ -15,7 +15,7 @@ const syncUser = inngest.createFunction(
             email: email_addresses[0]?.email_address,
             clerkId: id,
             name: `${first_name || ""} ${last_name || ""}`,
-
+            image: image_url,
         }
 
         await User.create(newUser)
@@ -23,7 +23,7 @@ const syncUser = inngest.createFunction(
         await upsertStreamUser({
             id: newUser.clerkId.toString(),
             name: newUser.name,
-
+            image: newUser.image
         })
     }
 )

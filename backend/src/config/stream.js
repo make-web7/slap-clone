@@ -7,7 +7,7 @@ const streamClient = StreamChat.getInstance(ENV.STREAM_API_KEY, ENV.STREAM_API_S
 export const upsertStreamUser = async (userData) => {
     try {
         await streamClient.upsertUser(userData)
-        console.log('Upsertedstream user successfully', userData.name)
+        console.log('Upserted  stream user successfully', userData.name)
     } catch (error) {
         console.error("error deleting stream user", error)
         throw new Error(error)
