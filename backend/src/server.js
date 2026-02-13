@@ -27,8 +27,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 })
 
-app.use("/api/inngest", serve({ client: inngest, functions }));
-app.use("/api/chat", chatRoutes)
+
 
 
 

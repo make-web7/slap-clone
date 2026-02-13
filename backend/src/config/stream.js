@@ -16,7 +16,7 @@ export const upsertStreamUser = async (userData) => {
 export const deleteStreamUser = async (userId) => {
     try {
         await streamClient.deleteUser(userId)
-        console.log(' user deleted successfully', userData.name)
+        console.log(' user deleted successfully', userId)
     } catch (error) {
         console.error("error deleting stream user", error)
     }
