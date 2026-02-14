@@ -8,6 +8,7 @@ import { inngest, functions } from "./config/inngest.js"
 import chatRoutes from "./routes/chat.route.js"
 import "../instrument.mjs"
 import * as Sentry from "@sentry/node"
+import {checkStreamEnv} from "./config/stream.js";
 
 const app = express();
 
@@ -61,6 +62,8 @@ const startServer = async () => {
     }
 }
 startServer()
-
+app.get('/debug-stream-vars', (req, res) => {
+    res.send(checkStreamEnv())
+})
 export default app;
 // aaravraghavan_db_user: rzjEmHqVmhQbhi8i

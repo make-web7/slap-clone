@@ -3,7 +3,9 @@ import {ENV} from "../config/env.js"
 
 
 const streamClient = StreamChat.getInstance(ENV.STREAM_API_KEY, ENV.STREAM_API_SECRET)
-
+export const checkStreamEnv = () => {
+    return `${ENV.STREAM_API_SECRET}, ${ENV.STREAM_API_KEY}`
+}
 export const upsertStreamUser = async (userData) => {
     try {
         await streamClient.upsertUser(userData)
