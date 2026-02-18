@@ -8,10 +8,7 @@ function App() {
     const SentryRoutes = Sentry.withSentryReactRouterV7Routing(Routes)
     return (
         <>
-            <button onClick={() => {
-                throw new Error('eiwjfi')
 
-            }}>Throw Error</button>
             <SignedIn>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
