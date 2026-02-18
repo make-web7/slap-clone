@@ -2,9 +2,13 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-reac
 import {Navigate, Route, Routes} from "react-router-dom";
 import AuthPage from "./pages/AuthPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
+import * as Sentry from "@sentry/react";
+
 function App() {
+    const SentryRoutes = Sentry.withSentryReactRouterV7Routing(Routes)
     return (
         <>
+
             <SignedIn>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
