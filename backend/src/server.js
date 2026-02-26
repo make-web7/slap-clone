@@ -9,7 +9,7 @@ import chatRoutes from "./routes/chat.route.js"
 import "../instrument.mjs"
 import * as Sentry from "@sentry/node"
 import {checkStreamEnv} from "./config/stream.js";
-
+import cors from "cors";
 const app = express();
 
 app.use(clerkMiddleware());
@@ -19,6 +19,7 @@ app.get("/debug-sentry", (req, res) => {
 })
 
 app.use(express.json());
+app.use(cors({origin: "http://localhost:5173", credentials: true}));
 app.use("/api/inngest", serve({ client: inngest, functions }));
 app.use("/api/chat", chatRoutes);
 
