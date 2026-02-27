@@ -26,6 +26,13 @@ export const deleteStreamUser = async (userId) => {
     }
 }
 
+export const addUserToPublicChannels = async (newUserId) => {
+    const publicChannels = await streamClient.queryChannels({discoverable: true})
+    for (const channel of publicChannels) {
+        await channel.addMembers([newUserId])
+    }
+}
+
 export const generateStreamToken = (userId) => {
     try {
         const userIdString = userId.toString();

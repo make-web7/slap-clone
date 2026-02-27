@@ -5,8 +5,10 @@ import {useSearchParams} from "react-router";
 import {useStreamChat} from "../hooks/useStreamChat.js";
 import PageLoader from "../components/PageLoader.jsx";
 import {Chat, Channel, ChannelList , MessageList, MessageInput, Thread, Window} from "stream-chat-react"
-import {PlusIcon} from "lucide-react";
+import {HashIcon, PlusIcon, UsersIcon} from "lucide-react";
 import CreateChannelModal from "../components/CreateChannelModal.jsx";
+import CustomChannelPreview from "../components/CustomChannelPreview.jsx";
+import UsersList from "../components/UsersList.jsx";
 const HomePage = () => {
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
     const [activeChannel, setActiveChannel] = useState(null);
@@ -51,7 +53,40 @@ const HomePage = () => {
                                   <span>Create Channel</span>
                               </button>
                           </div>
+                        <ChannelList
+                            filters={{members:{$in: [chatClient?.user?.id]}}}
+                            options={{state:true, watch:true}}
+                            Preview={({channel}) => (
+                                <CustomChannelPreview
+                                channel={channel}
+                                activeChannel={activeChannel}
+                                setActiveChannel={(channel) => setSearchParams({channel:channel.id})}
+                                />
+                            )}
+                            List = {({children, loading, error}) => (
+                                <div className="channel-sections">
+                                    <div className="section-header">
+                                        <div className="section-title">
+                                            <HashIcon className="size-4"/>
+                                            <span>Channels</span>
+                                        </div>
+                                    </div>
+                                    {loading && <div className="loading-message">Loading...</div>}
+                                    {error && <div className="error-message">{error}</div>}
 
+                                    <div className="channels-list">
+                                        {children}
+                                    </div>
+                                    <div className="section-header direct-messages">
+                                        <div className="section-title">
+                                            <UsersIcon className="size-4"/>
+                                            <span>Direct Messages</span>
+                                        </div>
+                                    </div>
+                                    <UsersList activeChannel={activeChannel} />
+                                </div>
+                            )}
+                        />
                       </div>
                   </div>
                 </div>
