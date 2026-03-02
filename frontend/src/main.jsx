@@ -24,7 +24,7 @@ import AuthProvider from "./providers/AuthProvider.jsx";
 import * as Sentry from "@sentry/react";
 
 Sentry.init({
-    dsn: "https://a60dbcdf28e35cdcd7d0487fb3eaca8f@o4510813727293440.ingest.us.sentry.io/4510904747884544",
+    dsn: import.meta.env.VITE_SENTRY_DSN,
     integrations: [
         Sentry.reactRouterV7BrowserTracingIntegration({
             useEffect: React.useEffect,

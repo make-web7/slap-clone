@@ -9,6 +9,7 @@ import {HashIcon, PlusIcon, UsersIcon} from "lucide-react";
 import CreateChannelModal from "../components/CreateChannelModal.jsx";
 import CustomChannelPreview from "../components/CustomChannelPreview.jsx";
 import UsersList from "../components/UsersList.jsx";
+import CustomChannelHeader from "../components/CustomChannelHeader.jsx";
 const HomePage = () => {
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
     const [activeChannel, setActiveChannel] = useState(null);
@@ -94,7 +95,7 @@ const HomePage = () => {
                 <div className="chat-main">
                     <Channel channel={activeChannel}>
                         <Window>
-                            {/*<CustomChannelHeader />*/}
+                            <CustomChannelHeader />
                             <MessageList />
                             <MessageInput />
                         </Window>

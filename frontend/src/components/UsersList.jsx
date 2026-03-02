@@ -15,7 +15,7 @@ const UsersList = ({activeChannel}) => {
         const response = await client.queryUsers(
             {id: {$ne: client.user.id}},
             {name: 1},
-            {limit: 20}
+            {limit: 20, presence: true}
         )
         return response.users
     }, [client])
@@ -25,6 +25,8 @@ const UsersList = ({activeChannel}) => {
         queryFn: fetchUsers,
         enabled: !!client?.user,
         staleTime: 1000*60*5,
+        refetchInterval: 30000,
+        refetchOnWindowFocus: true,
     })
 
     const startDirectMessage = async(targetUser) => {
