@@ -33,12 +33,12 @@ const CallPage = () => {
     const {data:tokenData} = useQuery({
         queryKey:["streamToken"],
         queryFn: getStreamToken,
-        enable: !!user,
+        enabled: !!user,
     })
 
     useEffect(() => {
         const initCall = async () => {
-            if(!tokenData.token || !user || !callId) return;
+            if(!tokenData?.token || !user || !callId) return;
 
         try {
             const videoClient = new StreamVideoClient({
@@ -64,8 +64,8 @@ const CallPage = () => {
         initCall();
     }, [tokenData, user, callId])
 
-    if(isConnecting || !idLoaded) {
-        return <div classname="h-screen flex justify-center items-center">
+    if(isConnecting || !isLoaded) {
+        return <div className="h-screen flex justify-center items-center">
             Connecting to call...
         </div>
     }
