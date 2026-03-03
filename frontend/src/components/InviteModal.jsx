@@ -28,7 +28,7 @@ const InviteModal = ({channel, onClose}) => {
                 setIsLoadingUsers(false)
             }
         }
-
+        fetchUsers()
     }, [channel, client])
 
     const handleInvite = async () => {
