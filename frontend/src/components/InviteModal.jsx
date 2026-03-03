@@ -96,6 +96,18 @@ const InviteModal = ({channel, onClose}) => {
 
                         )
                     })}
+                    <div className="create-channel-modal__actions mt-4">
+                    <button className="btn btn-secondary" onClick={onClose} disabled={isInviting}>
+                        Cancel
+                    </button>
+                    <button
+                        className="btn btn-primary"
+                        onClick={handleInvite}
+                        disabled={!selectedMembers.length || isInviting}
+                    >
+                        {isInviting ? "Inviting..." : "Invite"}
+                    </button>
+                </div>
                 </div>
 
             </div>
