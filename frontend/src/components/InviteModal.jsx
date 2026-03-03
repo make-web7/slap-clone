@@ -71,8 +71,8 @@ const InviteModal = ({channel, onClose}) => {
                                        accent-fuchsia-800"
                                        value={user.id}
                                        onChange={(e) => {
-                                           if(e.target.checked) setSelectedMembers(...selectedMembers, user.id)
-                                           else setSelectedMembers(selectedMembers.filter(id => id !== user.id))
+                                           if (e.target.checked) setSelectedMembers([...selectedMembers, user.id]);
+                                           else setSelectedMembers(selectedMembers.filter((id) => id !== user.id));
                                        }}
                                 />
                                 {user.image ? (
