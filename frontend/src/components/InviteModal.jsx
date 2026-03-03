@@ -50,7 +50,7 @@ const InviteModal = ({channel, onClose}) => {
     return (
         <div className="create-channel-modal-overlay">
             <div className="create-channel-modal">
-                <div className="create-channel-header">
+                <div className="create-channel-modal__header">
                     <h2>Invite Users</h2>
                     <button onClick={onClose} className="create-channel-modal__close">
                         <XIcon className="size-4" />
