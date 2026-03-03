@@ -31,7 +31,7 @@ const InviteModal = ({channel, onClose}) => {
 
     }, [channel, client])
 
-    const handleinvite = async () => {
+    const handleInvite = async () => {
         if(selectedMembers.length === 0) {
             return;
         }
